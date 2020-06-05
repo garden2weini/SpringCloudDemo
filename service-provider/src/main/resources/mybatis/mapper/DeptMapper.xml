@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--<mapper>标签用来使该xml文件与接口对应，'namespace'属性的参数应该是与xml文件相对应的接口的类路径，本例中就是我们第5步所写的'userMapper'接口-->
+<mapper namespace="com.merlin.springcloud.dao.DeptMapper">
+
+    <!--insert、select、update、delete四个标签即代表这增删改查，这里就不解释了 -->
+
+    <!--4个标签中的id值要与接口的方法名一一对应，这样执行方法时，就会执行与方法名相同的id中的sql语句,在标签中写入sql语句 -->
+    <!--#{}这个符号表示要传入的参数，在`{}`中填入参数名 -->
+    <insert id="addDept" useGeneratedKeys="true" keyProperty="id">
+		insert into dept(deptno,dname,db_source) values
+		(#{deptno},#{dname},#{db_source})
+	</insert>
+
+    <!--resutlType这个属性的参数是返回值类型的全类名 -->
+    <select id="findById" resultType="com.merlin.springcloud.entities.Dept">
+		select * from dept where deptno = #{id}
+	</select>
+
+    <select id="findAll" resultType="com.merlin.springcloud.entities.Dept">
+		select * from dept
+	</select>
+
+</mapper>

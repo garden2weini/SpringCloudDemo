@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <!--数据库驱动
+                <property name="driver" value="com.mysql.jdbc.Driver" /> -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver" />
+                <!--数据库url-->
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/superetail"></property>
+                <!--数据库用户名-->
+                <property name="username" value="merlin" />
+                <!--数据库密码-->
+                <property name="password" value="helloworld" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- 告知映射文件方式1，一个一个的配置
+        <mapper resource="com/merlin/springcloud/dao/DeptMapper.xml" /> -->
+        <!-- 告知映射文件方式2，自动扫描包内的Mapper接口与配置文件
+        <package name="mybatis/mapper" />-->
+    </mappers>
+</configuration>
