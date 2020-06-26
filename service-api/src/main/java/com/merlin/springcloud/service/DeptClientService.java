@@ -16,6 +16,7 @@ import com.merlin.springcloud.entities.Dept;
  */
 //@FeignClient(value = "dept-provider")
 //@FeignClient(name="dept-provider", contextId = "demo")
+//@FeignClient(name = "dept-provider", configuration = FeignSupportConfig.class)
 @FeignClient(value = "dept-provider", fallbackFactory = DeptClientServiceFallbackFactory.class)
 public interface DeptClientService {
     // NOTE: 参数必须与Provider一致

@@ -2,6 +2,8 @@ package com.merlin.springcloud.controller;
 
 import com.merlin.springcloud.entities.Dept;
 import com.merlin.springcloud.service.DeptClientService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,9 @@ import java.util.List;
  *
  */
 @RestController
-public class DeptControllerConsumer {
+public class DeptConsumerController {
+    private Logger logger = LoggerFactory.getLogger(DeptConsumerController.class);
+
     @Autowired
     private DeptClientService deptClient;
 

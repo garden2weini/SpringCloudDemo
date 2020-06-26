@@ -1,11 +1,19 @@
 package com.merlin.springcloud.entities;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
+// Swagger注解：ApiModel/ApiModelProperty
+@ApiModel(value = "com.merlin.springcloud.entities.Dept", description = "部门信息")
 public class Dept implements Serializable
 {
+    @ApiModelProperty(value = "Dept ID")
     private Long deptNo; // 主键
+    @ApiModelProperty(value = "Dept Name")
     private String deptName; // 部门名称
+    @ApiModelProperty(value = "Store Db Source")
     private String dbSource;// 来自那个数据库，因为微服务架构可以一个服务对应一个数据库，同一个信息被存储到不同数据库
 
     public Dept() {
