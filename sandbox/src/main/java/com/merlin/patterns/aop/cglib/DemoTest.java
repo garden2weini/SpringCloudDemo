@@ -1,31 +1,49 @@
 package com.merlin.patterns.aop.cglib;
 
-import net.sf.cglib.proxy.*;
-
-import java.io.IOException;
-
 /**
- * 创建一个Test
+ * 测试raw CGLib和SpringCore cglib构造代理类
  */
 public class DemoTest {
-    public static void main(String[] args) throws InterruptedException, IOException {
-        // NOTE: 将class 文件保存
-        //System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, ".");
-
-        DemoService demoService = new DemoService();
-        DemoFacadeCglib demoFacadeCglib = new DemoFacadeCglib(demoService);
-
-        //创建加强器，用来创建动态代理类
-        Enhancer enhancer = new Enhancer();
-        //为加强器指定要代理的业务类（即：为下面生成的代理类指定父类）
-        enhancer.setSuperclass(demoService.getClass());
-
-        //设置回调：对于代理类上所有方法的调用，都会调用CallBack，而Callback则需要实现intercept()方法进行拦
-        enhancer.setCallback(demoFacadeCglib);
-        // 创建动态代理类对象并返回
-        DemoService demoServiceProxy = (DemoService)enhancer.create();
-        // 调用
-        demoServiceProxy.executeMethod1();
-
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("To proxy for raw cglib jar......");
+        testRawCglib();
+        System.out.println("To proxy for raw spring-core(cglib) jar......");
+        testSpringCglib();
     }
+
+    private static void testSpringCglib() throws InterruptedException {
+        //新建被代理类的对象
+        Demo1Service cglibPractice = new Demo1Service();
+        //生成代理类对象
+        Demo1Service cglibPracticeProxy = (Demo1Service) new CglibProxy(cglibPractice).createCgLibProxy();
+        cglibPracticeProxy.executeMethod13();
+        //控制台输出内容
+        /**
+         * 01：打开冰箱门~~~~
+         * 02：把大象塞进去~~~~
+         * 03：关闭冰箱门~~~~
+         **/
+    }
+
+    private static void testRawCglib() throws InterruptedException {
+        Demo1Service demo1Service = new Demo1Service();
+        Demo2Service demo2Service = new Demo2Service();
+
+        System.out.println("To proxy class Demo1Service...");
+        CglibProxy2 cglibProxy2 = new CglibProxy2(demo1Service);
+        Demo1Service demo1ServiceProxy = (Demo1Service)cglibProxy2.createCgLibProxy();
+        // 调用
+        demo1ServiceProxy.executeMethod11();
+        demo1ServiceProxy.executeMethod12();
+
+        System.out.println("To proxy class Demo2Service...");
+        cglibProxy2 = new CglibProxy2(demo2Service);
+
+        // 创建动态代理类对象并返回
+        Demo2Service demo2ServiceProxy = (Demo2Service)cglibProxy2.createCgLibProxy();
+        // 调用
+        demo2ServiceProxy.executeMethod21();
+        demo2ServiceProxy.executeMethod22();
+    }
+
 }

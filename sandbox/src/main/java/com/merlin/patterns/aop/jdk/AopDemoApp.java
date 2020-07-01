@@ -1,5 +1,6 @@
 package com.merlin.patterns.aop.jdk;
 
+@Deprecated
 public class AopDemoApp {
     public static HelloAspect testAspect = new HelloAspectImpl();
     public static HelloAspect testAspectA = new HelloAspectImplA();
