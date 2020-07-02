@@ -12,6 +12,27 @@
     <artifactId>sandbox</artifactId>
 
     <dependencies>
+        <!-- ZK client. start -->
+        <!-- High-level API that greatly simplifies using ZooKeeper. -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <!-- Low-level API
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-client</artifactId>
+            <version>5.0.0</version>
+        </dependency> -->
+        <!-- All of the recipes listed on the ZooKeeper recipes doc (except two phase commit). -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+        <!-- ZK client. end -->
+
         <!-- 引入自己定义的api通用包，可以使用Dept部门Entity -->
         <dependency>
             <groupId>com.merlin.springcloud</groupId>
@@ -41,5 +62,29 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.42.Final</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <finalName>ROOT</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.30.v20200611</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                        <descriptor>${project.basedir}/src/main/resources/minispring/web.xml</descriptor>
+                    </webApp>
+                    <!-- scanIntervalSeconds 配置扫描时间时间, 如果有文件变动, 如pom.xml,web.xml或classes, 则jetty会重新加载应用 -->
+                    <scanIntervalSeconds>3</scanIntervalSeconds>
+                    <supportedPackagings>jar</supportedPackagings>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -1,14 +1,23 @@
 package com.merlin.patterns.proxy.dynamic;
 
+import net.sf.cglib.core.DebuggingClassWriter;
+
 import java.lang.reflect.Proxy;
 
-public class App {
+/**
+ * 动态代理：运行时动态生成代理对象
+ */
+public class DynamicProxyApp {
     public static void main(String[] args) {
+        // NOTE：可以将生成的代理类保存到磁盘
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+        // NOTE：新版SDK的属性已改变（jdk version >1.8）
+        System.getProperties().put("jdk.proxy.ProxyGenerator.saveGeneratedFiles", "true");
+
         IVehical car = new Car();
 
         Class[] clazzes = Car.class.getInterfaces();
         System.out.println(clazzes);
-
 
         /**
          * newProxyInstance，方法有三个参数：
