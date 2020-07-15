@@ -4,6 +4,7 @@ import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 // import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 // import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -18,6 +19,6 @@ import org.springframework.context.annotation.Configuration;
 //@EnableDiscoveryClient //服务发现, 可注册到所有类型的注册中心
 public class DeptProviderApp {
     public static void main(String[] args) {
-        SpringApplication.run(DeptProviderApp.class, args);
+        final ConfigurableApplicationContext run = SpringApplication.run(DeptProviderApp.class, args);
     }
 }
