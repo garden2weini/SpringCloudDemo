@@ -56,8 +56,10 @@ public class DubboServer {
     public static void main(String[] args) throws Exception {
         //获得IP
         String hostAddress = InetAddress.getLocalHost().getHostAddress();
-        // 注册服务
-        ServiceRegister.register("/IUserFacade", hostAddress, Const.PORT);
+        // 注册两个服务(Interfaces)
+        // NOTE: 可以通过注解扫描反射的方式，启动时进行动态注册
+        ServiceRegister.register("/UserFacade", hostAddress, Const.PORT);
+        ServiceRegister.register("/HelloServer", hostAddress, Const.PORT);
 
         new DubboServer(Const.PORT).run();
 

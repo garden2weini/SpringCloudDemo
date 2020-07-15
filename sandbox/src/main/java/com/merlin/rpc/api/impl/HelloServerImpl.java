@@ -1,6 +1,6 @@
-package com.merlin.rpc.v1.server;
+package com.merlin.rpc.api.impl;
 
-import com.merlin.rpc.v1.HelloServer;
+import com.merlin.rpc.api.HelloServer;
 
 public class HelloServerImpl implements HelloServer {
     public String sayHello(String arg) {

@@ -1,4 +1,4 @@
-package com.merlin.rpc.v1;
+package com.merlin.rpc.api;
 
 public interface HelloServer {
     String sayHello(String arg);

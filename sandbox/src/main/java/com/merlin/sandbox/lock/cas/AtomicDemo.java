@@ -1,4 +1,4 @@
-package com.merlin.sandbox;
+package com.merlin.sandbox.lock.cas;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -22,10 +22,13 @@ public class AtomicDemo {
     private static int count = 0;
     private static Lock lock = new ReentrantLock(); // 重入锁 防止锁嵌套时死锁
 
+    // 保证lock原子性
+    // NOTE：重入锁保证incr进入decr不会死锁！
     private static void incr() {
         try {
             lock.lock(); //加锁 将并行变串行
             Thread.sleep(10);
+            // count++为多元操作
             count++;
             decr();
         } catch(Exception e) {

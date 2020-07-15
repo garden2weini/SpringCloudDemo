@@ -1,7 +1,7 @@
 package com.merlin.rpc.v2dubbo.client;
 
-import com.merlin.rpc.v2dubbo.api.DubboRequest;
-import com.merlin.rpc.v2dubbo.zk.ZkWatchDog;
+import com.merlin.rpc.v2dubbo.DubboRequest;
+import com.merlin.rpc.v2dubbo.zk.WatchDog;
 import com.merlin.rpc.v2dubbo.util.RandomLoadBalance;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
@@ -35,7 +35,7 @@ public class DubboConsumerHandler implements InvocationHandler {
                 }
             });
             //从注册中心获取服务端ip和端口
-            ZkWatchDog watchDog = new ZkWatchDog(method.getDeclaringClass().getSimpleName());
+            WatchDog watchDog = new WatchDog(method.getDeclaringClass().getSimpleName());
             RandomLoadBalance loadBalance = new RandomLoadBalance();
 
             String address = loadBalance.chooseServiceHost();

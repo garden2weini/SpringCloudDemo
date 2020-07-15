@@ -1,10 +1,10 @@
-package com.merlin.rpc.v2dubbo.api;
+package com.merlin.rpc.api;
 
 /**
  * dubbo api接口
  *
  */
-public interface IUserFacade {
+public interface UserFacade {
 
     /**
      * 返回用户名接口

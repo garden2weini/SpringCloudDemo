@@ -1,7 +1,7 @@
 package com.merlin.rpc.v1.client;
 
 import com.merlin.rpc.Const;
-import com.merlin.rpc.v1.HelloServer;
+import com.merlin.rpc.api.HelloServer;
 
 public class RpcClientApp {
     public static void main(String[] args) {

@@ -162,3 +162,4 @@ docker run -d --hostname rabbitserver --name merlin-rabbit rabbitmq:3.8.4
 - [极客学院](https://wiki.jikexueyuan.com/list/back-end/)
 - *《Effective Java》
 - [数据结构直观展示](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+- [Srping Cloud Alibaba](https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md)

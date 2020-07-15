@@ -1,4 +1,4 @@
-package com.merlin.rpc.v2dubbo.api;
+package com.merlin.rpc.v2dubbo;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -6,7 +6,9 @@ import java.util.Arrays;
 public class DubboRequest implements Serializable {
 
     private static final long serialVersionUID = 422805234202183587L;
+
     private Class<?> interfaceClass;
+    // private String className;
     private String methodName;
     private Class<?>[] paramTypes;
     private Object[] args;

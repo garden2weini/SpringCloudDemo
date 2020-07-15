@@ -1,4 +1,4 @@
-package com.merlin.sandbox;
+package com.merlin.sandbox.lock;
 
 /**
  * NOTE: 线程切换，导致ThreadLocal的数据丢失，可以改用InheritableThreadLocal来解决！

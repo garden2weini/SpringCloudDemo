@@ -3,3 +3,4 @@ target
 *.iml
 *.class
 /com
+.DS_Store

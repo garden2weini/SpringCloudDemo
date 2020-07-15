@@ -46,9 +46,9 @@ public class ProcessHandler implements Runnable {
     }
 
     public Object invoke(RpcRequest request) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Object[] args = request.getParameters();
+        Object[] args = request.getParams();
         Class clazz = Class.forName(request.getClassName());
-        Method method = clazz.getMethod(request.getMethodName(), request.getTypes());
+        Method method = clazz.getMethod(request.getMethodName(), request.getParamTypes());
         Object obj = method.invoke(server, args);
         return obj;
     }

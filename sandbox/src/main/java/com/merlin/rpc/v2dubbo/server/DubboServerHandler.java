@@ -2,9 +2,11 @@ package com.merlin.rpc.v2dubbo.server;
 
 import java.lang.reflect.Method;
 
-import com.merlin.rpc.v2dubbo.api.DubboRequest;
-import com.merlin.rpc.v2dubbo.api.IUserFacade;
-import com.merlin.rpc.v2dubbo.api.UserFacade;
+import com.merlin.rpc.api.HelloServer;
+import com.merlin.rpc.api.impl.HelloServerImpl;
+import com.merlin.rpc.v2dubbo.DubboRequest;
+import com.merlin.rpc.api.UserFacade;
+import com.merlin.rpc.api.impl.UserFacadeImpl;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -43,8 +45,11 @@ public class DubboServerHandler extends ChannelInboundHandlerAdapter {
      * @return
      */
     private Object getInstenceByInterfaceClass(Class<?> clazz) {
-        if (IUserFacade.class.equals(clazz)) {
-            return new UserFacade();
+        if (UserFacade.class.equals(clazz)) {
+            return new UserFacadeImpl();
+        }
+        if (HelloServer.class.equals(clazz)) {
+            return new HelloServerImpl();
         }
         return null;
     }

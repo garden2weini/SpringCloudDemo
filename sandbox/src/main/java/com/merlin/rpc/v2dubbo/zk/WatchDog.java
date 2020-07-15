@@ -8,12 +8,16 @@ import org.apache.zookeeper.ZooKeeper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ZkWatchDog {
+/**
+ * 消费者端使用，用以监控特定的服务提供者。
+ * NOTE：监控zk中特定服务(Server Name)的集群(host:port)数量变化, 并将变化赋给LoadBalance.SERVICE_LIST
+ */
+public class WatchDog {
     private String BASE_SERVICE = Const.DUBBO_ZK_ROOT;
     private String SERVICE_NAME;
     private ZooKeeper zooKeeper;
 
-    public ZkWatchDog(String serviceName) {
+    public WatchDog(String serviceName) {
         this.SERVICE_NAME = "/" + serviceName;
         try {
             //连接zk,获得列表信息
